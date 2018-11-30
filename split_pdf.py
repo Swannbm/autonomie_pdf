@@ -1,5 +1,5 @@
 #!/home/swann/.virtualenvs/autonomie/bin/python
-# coding=utf8
+# coding=utf-8
 
 # liste des imports requis
 import argparse
