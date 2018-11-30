@@ -16,11 +16,7 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 #         CONFIG
 ####################
 
-LOG_LEVEL = logging.INFO
-OUTPUT_DIR = '/home/swann/projets/autonomie/tmp/ftp'
-SUCESS_DIR = os.path.join(OUTPUT_DIR, 'pdf_done')
-FAIL_DIR = os.path.join(OUTPUT_DIR, 'pdf_fail')
-LOG_DIR = '/var/log/autonomie'
+from config import *
 
 CHECK_FILENAME = r'(?P<DOCTYPE>salaire|tresorerie)_(?P<YEAR>[0-9]+)_(?P<MONTH>[^_]+)\.pdf'
 #FIND_ANCODE = r'NAF(?P<ANCODE>[a-zA-Z0-9]+)[ ]+Salaire'
