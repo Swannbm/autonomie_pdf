@@ -18,15 +18,6 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 
 from config import *
 
-CHECK_FILENAME = r'(?P<DOCTYPE>salaire|tresorerie)_(?P<YEAR>[0-9]+)_(?P<MONTH>[^_]+)\.pdf'
-#FIND_ANCODE = r'NAF(?P<ANCODE>[a-zA-Z0-9]+)[ ]+Salaire'
-#FIND_NAME = r'Virement     (Mme|Mlle|M)( )?(?P<NAME>[\w \-]*?)[ ]{20,40}'
-# changed 201811 for handle new salary roll
-FIND_ANCODE = r'(?P<ANCODE>[a-zA-Z0-9]+)[ ]+R.mun.ration fixe'
-FIND_NAME = r'Cat.gorie(Cadre|Employ. non cadre)[ ]+(Mme|Mlle|M)[ ]*(?P<NAME>[\w \-]*?)[ ]+'
-# end change
-FLAGS = re.MULTILINE | re.IGNORECASE | re.UNICODE
-
 ####################
 #         SCRIPT
 ####################
@@ -322,15 +313,14 @@ def write_pdf_extract(pdf, new_pdf_filepath, start_page, end_page):
 
 _NOSPACES = re.compile(r'[-\s]+')
 _UNIX_VALID = re.compile(r'[^\w\s-]')
-def unix_sanitize(some_name):
+def unix_sanitize(value):
     """
     Normalise le texte pour pouvoir être utilisé comme nom de fichier
-    :param some_name: texte à normaliser
-    :type some_name: str
+    :param value: texte à normaliser
+    :type value: str
     :return: texte normalisé
     :rtype: unicode
     """
-    value = some_name
     value = unicodedata.normalize('NFKD', value).encode('ascii', 'ignore')
     value = unicode(_UNIX_VALID.sub('', value).strip())
     return _NOSPACES.sub('-', value)
