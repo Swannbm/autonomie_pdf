@@ -18,6 +18,16 @@ from PyPDF2 import PdfFileWriter, PdfFileReader
 
 from config import *
 
+CHECK_FILENAME = r'(?P<DOCTYPE>salaire|tresorerie)_(?P<YEAR>[0-9]+)_(?P<MONTH>[^_]+)\.pdf'
+#FIND_ANCODE = r'NAF(?P<ANCODE>[a-zA-Z0-9]+)[ ]+Salaire'
+#FIND_NAME = r'Virement     (Mme|Mlle|M)( )?(?P<NAME>[\w \-]*?)[ ]{20,40}'
+# changed 201811 for handle new salary roll
+#FIND_ANCODE = r'(?P<ANCODE>[a-zA-Z0-9]+)[ ]+(R.mun.ration fixe|Cong. sans solde)'
+FIND_ANCODE = r'(NAF)?(?P<ANCODE>[a-zA-Z0-9]+)[ ]+(R.mun.ration fixe|Cong. sans solde|Salaire mensuel)'
+FIND_NAME = r'Cat.gorie(Cadre|Employ. non cadre)[ ]+(Mme|Mlle|M)[ ]*(?P<NAME>[\w \-]*?)[ ]+'
+# end change
+FLAGS = re.MULTILINE | re.IGNORECASE | re.UNICODE
+
 ####################
 #         SCRIPT
 ####################
