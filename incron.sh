@@ -5,12 +5,21 @@
 #         CONFIG
 ####################
 
-log_file=/var/log/autonomie/incron.sh.log
+# local
 root_app=/home/swann/projets/split_pdf/split_pdf.py
 venv_dir=/home/swann/.virtualenvs/autonomie
 output_dir=/home/swann/projets/autonomie/tmp/ftp/
-done_dir=/home/swann/projets/autonomie/tmp/ftp/pdf_done
-fail_dir=/home/swann/projets/autonomie/tmp/ftp/pdf_fail
+
+# prod serveur
+# root_app=/root/auto_split/split_pdf.py
+# venv_dir=/root/.local/share/virtualenvs/autonomie
+# output_dir=/root/autonomie/tmp/ftp/
+
+# no change
+log_file=/var/log/autonomie/incron.sh.log
+done_dir=$output_dir/pdf_done
+fail_dir=$output_dir/pdf_fail
+
 
 ####################
 #         SCRIPT

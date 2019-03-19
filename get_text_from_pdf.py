@@ -14,7 +14,7 @@ FIND_NAME = r'Cat.gorie(Cadre|Employ. non cadre)[ ]+(Mme|Mlle|M)[ ]*(?P<NAME>[\w
 FLAGS = re.MULTILINE | re.IGNORECASE | re.UNICODE
 
 #temp_file = 'salaire_2018_10.PDF'
-temp_file = 'salaire_2019_01.PDF'
+temp_file = 'salaire_2019_02.PDF'
 with open(temp_file, 'rb') as f:
     temp_pdf = PdfFileReader(f)
     for i, page in enumerate(temp_pdf.pages):
